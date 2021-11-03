@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The weather</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/ac1082b26e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row top">
+        <div class="col-4">
+          <h1>
+            <span id="temp">24</span>
+            <span class="current-unit" id="current-unit">°C</span>
+            <span class="unused-unit" id="unused-unit">°F</span>
+          </h1>
+          <h3>SUNNY</h3>
+          <h4>DATE ERROR</h4>
+        </div>
+        <div class="col-4">
+          <h2>MELBOURNE</h2>
+          <img
+            class="weather border border-5"
+            src="http://clipart-library.com/images/pcoBXxXcE.png"
+            alt=""
+            width="150px"
+          />
+        </div>
+        <div class="col-4 extra">
+          <form id="city-search-form">
+            <input id="city-input" type="text" placeholder="Enter city" />
+            <input type="Submit" value="Search" />
+          </form>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <i class="fas fa-tint"> </i>Humidity
+            </li>
+            <li class="list-group-item">
+              <i class="fas fa-cloud-showers-heavy"></i>Precipitation
+            </li>
+            <li class="list-group-item"><i class="fas fa-wind"></i>Wind NE</li>
+          </ul>
+
+          <img
+            class="sleep"
+            src="https://www.pinclipart.com/picdir/big/122-1221331_free-cat-cliparts-25-buy-clip-art-sleeping.png"
+            alt=""
+            width="100px"
+          />
+        </div>
+      </div>
+
+      <hr />
+      <div class="card-group">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Wednesday</p>
+          </div>
+          <img
+            src="http://clipart-library.com/images/pcoBXxXcE.png"
+            class="card-img-top"
+            alt="Wednesday"
+          />
+          <div class="forecast">12°C/23°C</div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Thursday</p>
+          </div>
+          <img
+            src="http://clipart-library.com/images/pcoBXxXcE.png"
+            class="card-img-top"
+            alt="Thursday"
+          />
+          <div class="forecast">12°C/23°C</div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Friday</p>
+          </div>
+          <img
+            src="http://clipart-library.com/images/pcoBXxXcE.png"
+            class="card-img-top"
+            alt="Friday"
+          />
+          <div class="forecast">12°C/23°C</div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Saturday</p>
+          </div>
+          <img
+            src="http://clipart-library.com/images/pcoBXxXcE.png"
+            class="card-img-top"
+            alt="Saturday"
+          />
+          <div class="forecast">12°C/23°C</div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Sunday</p>
+          </div>
+          <img
+            src="http://clipart-library.com/images/pcoBXxXcE.png"
+            class="card-img-top"
+            alt="Sunday"
+          />
+          <div class="forecast">12°C/23°C</div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Monday</p>
+          </div>
+          <img
+            src="http://clipart-library.com/images/pcoBXxXcE.png"
+            class="card-img-top"
+            alt="Monday"
+          />
+          <div class="forecast">12°C/23°C</div>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
