@@ -33,6 +33,10 @@ hr {
   display: block;
 }
 
+.city {
+  text-transform: capitalize;
+}
+
 .unused-unit {
   font-size: 20px;
   position: relative;

@@ -55,18 +55,6 @@ let dateDisplay = document.querySelector("h4");
 
 dateDisplay.innerHTML = `${get12HourTime(now)} </br > ${getDate(now)}`;
 
-//City search engine
-let citySearched = document.querySelector("#city-search-form");
-
-function cityDisplay(event) {
-  event.preventDefault();
-  let city = document.querySelector("#city-input");
-  let currentCity = document.querySelector("h2");
-  currentCity.innerHTML = city.value.toUpperCase();
-}
-
-citySearched.addEventListener("submit", cityDisplay);
-
 //Switching temperature unit between celcius and fahrenheit
 let unusedtUnit = document.querySelector("#unused-unit");
 
@@ -88,3 +76,41 @@ function unitConverter() {
 }
 
 unusedtUnit.addEventListener("click", unitConverter);
+
+//City search engine
+let citySearched = document.querySelector("#city-search-form");
+
+function getCityInfo(response) {
+  let cityInfo = response.data;
+  console.log(cityInfo);
+
+  let temperature = cityInfo.main.temp;
+  console.log(temperature);
+  let description = cityInfo.weather[0].description;
+  console.log(description);
+  let weather = cityInfo.weather[0].main;
+  console.log(weather);
+  let humidity = cityInfo.main.humidity;
+  console.log(humidity);
+  let pressure = cityInfo.main.pressure;
+  console.log(pressure);
+  let wind = cityInfo.wind.speed;
+  console.log(wind);
+}
+
+function inputCity(event) {
+  event.preventDefault();
+  city = document.querySelector("#city-input");
+  console.log(city.value);
+
+  let apiKey = "ce5b2bb33ecd8a0125c5f9876d5e019d";
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${apiKey}&units=metric`;
+
+  axios.get(url).then(getCityInfo);
+
+  //Display succesful searched city
+  let h2 = document.querySelector("#city");
+  h2.innerHTML = city.value;
+}
+
+citySearched.addEventListener("submit", inputCity);

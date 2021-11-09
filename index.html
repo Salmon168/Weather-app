@@ -16,6 +16,7 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -30,7 +31,7 @@
           <h4>DATE ERROR</h4>
         </div>
         <div class="col-4">
-          <h2>MELBOURNE</h2>
+          <h2 class="city" id="city">MELBOURNE</h2>
           <img
             class="weather border border-5"
             src="http://clipart-library.com/images/pcoBXxXcE.png"
@@ -45,12 +46,15 @@
           </form>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              <i class="fas fa-tint"> </i>Humidity
+              <i class="fas fa-tint"> </i>Humidity: <span id="humid"> </span>
             </li>
             <li class="list-group-item">
-              <i class="fas fa-cloud-showers-heavy"></i>Precipitation
+              <i class="fas fa-cloud-showers-heavy"></i>Pressure:
+              <span id="pressure"> </span>
             </li>
-            <li class="list-group-item"><i class="fas fa-wind"></i>Wind NE</li>
+            <li class="list-group-item">
+              <i class="fas fa-wind"></i>Wind Speed: <span id="wind"> </span>
+            </li>
           </ul>
 
           <img
