@@ -27,33 +27,39 @@
             <span class="current-unit" id="current-unit">°C</span>
             <span class="unused-unit" id="unused-unit">°F</span>
           </h1>
-          <h3>SUNNY</h3>
+          <h3 id="weather">SUNNY</h3>
           <h4>DATE ERROR</h4>
         </div>
         <div class="col-4">
-          <h2 class="city" id="city">MELBOURNE</h2>
+          <h2 class="city" id="city">City Name</h2>
           <img
             class="weather border border-5"
-            src="http://clipart-library.com/images/pcoBXxXcE.png"
+            src="src/sun.png"
             alt=""
             width="150px"
           />
         </div>
         <div class="col-4 extra">
           <form id="city-search-form">
-            <input id="city-input" type="text" placeholder="Enter city" />
+            <input
+              class="city-search"
+              id="city-input"
+              type="text"
+              placeholder="Enter city"
+            />
             <input type="Submit" value="Search" />
+            <input id="location-button" type="submit" value="📌" ; />
           </form>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              <i class="fas fa-tint"> </i>Humidity: <span id="humid"> </span>
+              <i class="fas fa-tint"> </i>Humidity: <span id="humid"> </span>%
             </li>
             <li class="list-group-item">
               <i class="fas fa-cloud-showers-heavy"></i>Pressure:
-              <span id="pressure"> </span>
+              <span id="pressure"> </span> hPA
             </li>
             <li class="list-group-item">
-              <i class="fas fa-wind"></i>Wind Speed: <span id="wind"> </span>
+              <i class="fas fa-wind"></i>Wind Speed: <span id="wind"></span> m/s
             </li>
           </ul>
 
@@ -72,66 +78,42 @@
           <div class="card-body">
             <p class="card-text">Wednesday</p>
           </div>
-          <img
-            src="http://clipart-library.com/images/pcoBXxXcE.png"
-            class="card-img-top"
-            alt="Wednesday"
-          />
+          <img src="src/sun.png" class="card-img-top" alt="Wednesday" />
           <div class="forecast">12°C/23°C</div>
         </div>
         <div class="card">
           <div class="card-body">
             <p class="card-text">Thursday</p>
           </div>
-          <img
-            src="http://clipart-library.com/images/pcoBXxXcE.png"
-            class="card-img-top"
-            alt="Thursday"
-          />
+          <img src="src/sun.png" class="card-img-top" alt="Thursday" />
           <div class="forecast">12°C/23°C</div>
         </div>
         <div class="card">
           <div class="card-body">
             <p class="card-text">Friday</p>
           </div>
-          <img
-            src="http://clipart-library.com/images/pcoBXxXcE.png"
-            class="card-img-top"
-            alt="Friday"
-          />
+          <img src="src/sun.png" class="card-img-top" alt="Friday" />
           <div class="forecast">12°C/23°C</div>
         </div>
         <div class="card">
           <div class="card-body">
             <p class="card-text">Saturday</p>
           </div>
-          <img
-            src="http://clipart-library.com/images/pcoBXxXcE.png"
-            class="card-img-top"
-            alt="Saturday"
-          />
+          <img src="src/sun.png" class="card-img-top" alt="Saturday" />
           <div class="forecast">12°C/23°C</div>
         </div>
         <div class="card">
           <div class="card-body">
             <p class="card-text">Sunday</p>
           </div>
-          <img
-            src="http://clipart-library.com/images/pcoBXxXcE.png"
-            class="card-img-top"
-            alt="Sunday"
-          />
+          <img src="src/sun.png" class="card-img-top" alt="Sunday" />
           <div class="forecast">12°C/23°C</div>
         </div>
         <div class="card">
           <div class="card-body">
             <p class="card-text">Monday</p>
           </div>
-          <img
-            src="http://clipart-library.com/images/pcoBXxXcE.png"
-            class="card-img-top"
-            alt="Monday"
-          />
+          <img src="src/sun.png" class="card-img-top" alt="Monday" />
           <div class="forecast">12°C/23°C</div>
         </div>
       </div>
