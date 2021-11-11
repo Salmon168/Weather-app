@@ -129,7 +129,7 @@ function getCityInfo(response) {
 
 function inputCity(event) {
   event.preventDefault();
-  city = document.querySelector("#city-input");
+  let city = document.querySelector("#city-input");
   console.log(city.value);
 
   let apiKey = "ce5b2bb33ecd8a0125c5f9876d5e019d";
@@ -139,8 +139,8 @@ function inputCity(event) {
 }
 
 function getCityName(position) {
-  latitude = position.coords.latitude;
-  longitude = position.coords.longitude;
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
 
   let apiKey = "ce5b2bb33ecd8a0125c5f9876d5e019d";
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
@@ -157,8 +157,8 @@ citySearched.addEventListener("submit", inputCity);
 
 locationSearched.addEventListener("click", inputLocation);
 
-function initialCity() {
-  navigator.geolocation.getCurrentPosition(getCityName);
-}
+// function initialCity() {
+//   navigator.geolocation.getCurrentPosition(getCityName);
+// }
 
-initialCity();
+// initialCity();
