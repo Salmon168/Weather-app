@@ -11,6 +11,12 @@
       integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
     <script
       src="https://kit.fontawesome.com/ac1082b26e.js"
       crossorigin="anonymous"
@@ -21,25 +27,28 @@
   <body>
     <div class="container">
       <div class="row top">
-        <div class="col-4">
-          <h1>
-            <span id="temp">XX.X</span>
-            <span class="current-unit" id="current-unit">°C</span>
-            <span class="unused-unit" id="unused-unit">°F</span>
-          </h1>
-          <h3 id="weather">SUNNY</h3>
-          <h4>DATE ERROR</h4>
-        </div>
-        <div class="col-4">
-          <h2 class="city" id="city">City Name</h2>
+        <div class="col-4 main-weather-view">
           <img
-            class="weather border border-5"
-            src="src/sun.png"
+            class="weather"
+            id="weather-icon"
+            src="src/icons/11d.gif"
             alt=""
             width="150px"
           />
         </div>
-        <div class="col-4 extra">
+        <div class="col-4 overview">
+          <h2 class="city">
+            <i class="fas fa-map-marker-alt"></i> <span id="city"></span>
+          </h2>
+          <h1>
+            <span id="temp">XX.X</span>
+            <span class="current-unit" id="current-unit">°C</span
+            ><span class="unused-unit clearfix" id="unused-unit">°F</span>
+          </h1>
+          <h3 id="weather">SUNNY</h3>
+          <h4>DATE ERROR</h4>
+        </div>
+        <div class="col-4 extra-info">
           <form id="city-search-form">
             <input
               class="city-search"
@@ -50,28 +59,23 @@
             <input type="Submit" value="Search" />
             <input id="location-button" type="submit" value="📌" ; />
           </form>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <i class="fas fa-tint"> </i>Humidity: <span id="humid"> </span>%
+
+          <ul>
+            <li>
+              <i class="fas fa-tint"></i> Humidity: <span id="humid"> </span>%
             </li>
-            <li class="list-group-item">
-              <i class="fas fa-cloud-showers-heavy"></i>Pressure:
+            <li>
+              <i class="fas fa-cloud-showers-heavy"></i> Pressure:
               <span id="pressure"> </span> hPA
             </li>
-            <li class="list-group-item">
-              <i class="fas fa-wind"></i>Wind Speed: <span id="wind"></span> m/s
+            <li>
+              <i class="fas fa-wind"></i> Wind Speed:
+              <span id="wind"></span> m/s
             </li>
           </ul>
-
-          <img
-            class="sleep"
-            src="https://www.pinclipart.com/picdir/big/122-1221331_free-cat-cliparts-25-buy-clip-art-sleeping.png"
-            alt=""
-            width="100px"
-          />
         </div>
       </div>
-<!-- 
+      <!-- 
       <hr />
       <div class="card-group">
         <div class="card">
@@ -114,16 +118,14 @@
             <p class="card-text">Monday</p>
           </div>
           <img src="src/sun.png" class="card-img-top" alt="Monday" />
-          <div class="forecast">12°C/23°C</div>
-        </div> -->
-      </div>
+          <div class="forecast">12°C/23°C</div>-->
     </div>
-    <script src="src/index.js"></script>
     <small class="source">
       <a href="https://github.com/Salmon168/Weather-app" target="_blank"
         >Open-source code
       </a>
       by Dayana Fuad</small
     >
+    <script src="src/index.js"></script>
   </body>
 </html>

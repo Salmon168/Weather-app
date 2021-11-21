@@ -95,7 +95,6 @@ function getCityInfo(response) {
   //Extracting info from JSON
   let cityName = cityInfo.name;
   let temperature = Number(cityInfo.main.temp).toFixed(1);
-  let description = cityInfo.weather[0].description;
   let weather = cityInfo.weather[0].main;
   let humidity = cityInfo.main.humidity;
   let pressure = cityInfo.main.pressure;
@@ -125,17 +124,25 @@ function getCityInfo(response) {
   //Wind
   let windDisplay = document.querySelector("#wind");
   windDisplay.innerHTML = wind;
+
+  //icon
+  let iconCode = cityInfo.weather[0].icon;
+  let weatherIcon = document.querySelector("#weather-icon");
+  let link = `src/icons/${iconCode}.gif`;
+  weatherIcon.setAttribute("src", `src/icons/${iconCode}.gif`);
 }
 
-function inputCity(event) {
-  event.preventDefault();
-  let city = document.querySelector("#city-input");
-  console.log(city.value);
-
+function inputCity(city) {
   let apiKey = "ce5b2bb33ecd8a0125c5f9876d5e019d";
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${apiKey}&units=metric`;
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
   axios.get(url).then(getCityInfo);
+}
+
+function submitCity(event) {
+  event.preventDefault();
+  let city = document.querySelector("#city-input");
+  inputCity(city.value);
 }
 
 function getCityName(position) {
@@ -153,12 +160,8 @@ function inputLocation(event) {
   navigator.geolocation.getCurrentPosition(getCityName);
 }
 
-citySearched.addEventListener("submit", inputCity);
+citySearched.addEventListener("submit", submitCity);
+
+inputCity("Kuala Lumpur");
 
 locationSearched.addEventListener("click", inputLocation);
-
-// function initialCity() {
-//   navigator.geolocation.getCurrentPosition(getCityName);
-// }
-
-// initialCity();

@@ -1,5 +1,6 @@
 body {
-  background-color: lightblue;
+  background-color: #c9bfb5;
+  font-family: "M PLUS 1", sans-serif;
 }
 
 form {
@@ -8,30 +9,48 @@ form {
 }
 
 h1 {
+  position: relative;
+  left: 20px;
   text-align: center;
   font-size: 60px;
 }
 
 h2 {
   text-align: center;
-  font-size: 25px;
+  font-weight: 500;
+  font-size: 15px;
+  margin: 20px 0 0 0;
 }
 
 h3 {
   text-align: center;
-  font-weight: lighter;
+  font-weight: 300;
   text-transform: uppercase;
 }
 
 h4 {
   text-align: center;
-  font-weight: light;
+  font-weight: 600;
   font-size: 15px;
 }
 
 hr {
   margin: 0 0 20px 0;
   display: block;
+}
+
+small {
+  display: block;
+  text-align: center;
+}
+
+ul {
+  margin: 60px 20px 0 20px;
+  list-style: none;
+  background-color: #c9bfb5;
+  opacity: 0.6;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .city {
@@ -42,7 +61,6 @@ hr {
   font-size: 20px;
   position: relative;
   top: -35px;
-  right: 20px;
   color: rgb(149, 149, 243);
   text-decoration: underline;
 }
@@ -51,7 +69,7 @@ hr {
   font-size: 40px;
   position: relative;
   top: -20px;
-  right: 20px;
+  right: 15px;
 }
 
 .unused-unit:hover {
@@ -60,20 +78,13 @@ hr {
 }
 
 .weather {
+  width: 300px;
   display: block;
-  margin: 0 auto;
-  padding: 10px;
+  margin: 0 10px 0 15px;
 }
 
 .test {
   display: block;
-}
-
-.sleep {
-  position: relative;
-  bottom: -10px;
-  display: block;
-  padding-top: 20px;
 }
 
 .list-group-item {
@@ -92,10 +103,16 @@ hr {
 }
 
 .container {
-  background-color: #ffffff;
-  border-radius: 15px;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 14, 54, 1) 0%,
+    rgba(64, 33, 88, 1) 85%,
+    rgba(125, 86, 131, 1) 100%
+  );
+  border-radius: 10px;
   display: block;
-  max-width: 80%;
+  width: 850px;
+  min-height: 250px;
   margin: 10px auto;
   padding: 10px;
 }
@@ -119,7 +136,7 @@ hr {
   text-align: center;
 }
 
-.extra {
+.extra-info {
   padding: 10px;
 }
 
@@ -127,8 +144,10 @@ hr {
   padding: 30px 0 0 0;
 }
 
-.source {
-  position: relative;
-  left: 100px;
-  bottom: 10px;
+.overview {
+  padding: 30px 0 0 12px;
+}
+
+.main-weather-view {
+  padding: 0;
 }
