@@ -1,6 +1,7 @@
 body {
-  background-color: #c9bfb5;
+  background: #cad0d8;
   font-family: "M PLUS 1", sans-serif;
+  color: white;
 }
 
 form {
@@ -47,10 +48,11 @@ small {
 ul {
   margin: 60px 20px 0 20px;
   list-style: none;
-  background-color: #c9bfb5;
-  opacity: 0.6;
+  background: #cad0d8;
+  opacity: 0.8;
   border-radius: 10px;
   padding: 10px;
+  color: rgba(14, 12, 34, 1);
 }
 
 .city {
@@ -105,9 +107,8 @@ ul {
 .container {
   background: linear-gradient(
     180deg,
-    rgba(20, 14, 54, 1) 0%,
-    rgba(64, 33, 88, 1) 85%,
-    rgba(125, 86, 131, 1) 100%
+    rgba(14, 12, 34, 1) 0%,
+    rgba(66, 94, 127, 1) 90%
   );
   border-radius: 10px;
   display: block;

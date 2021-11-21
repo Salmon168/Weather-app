@@ -87,6 +87,28 @@ let citySearched = document.querySelector("#city-search-form");
 //Search by location
 let locationSearched = document.querySelector("#location-button");
 
+function switchTheme(icon) {
+  console.log(icon);
+  if (icon.includes("d")) {
+    let background = document.querySelector(".container");
+    background.style.background =
+      "linear-gradient(180deg, rgba(42,117,185,1) 0%, rgba(67,147,213,1) 26%, rgba(118,174,225,1) 88%)";
+    let bodyColor = document.querySelector("body");
+    bodyColor.style.background = "#ffffff";
+    let list = document.querySelector("ul");
+    list.style.background = "#B8D6F1";
+  }
+  if (icon.includes("n")) {
+    let background = document.querySelector(".container");
+    background.style.background =
+      "linear-gradient(180deg,rgba(14, 12, 34, 1) 0%,rgba(66, 94, 127, 1) 90%)";
+    let bodyColor = document.querySelector("body");
+    bodyColor.style.background = "#cad0d8";
+    let list = document.querySelector("ul");
+    list.style.background = "#cad0d8";
+  }
+}
+
 //Get info from weather api
 function getCityInfo(response) {
   let cityInfo = response.data;
@@ -130,6 +152,7 @@ function getCityInfo(response) {
   let weatherIcon = document.querySelector("#weather-icon");
   let link = `src/icons/${iconCode}.gif`;
   weatherIcon.setAttribute("src", `src/icons/${iconCode}.gif`);
+  switchTheme(iconCode);
 }
 
 function inputCity(city) {
