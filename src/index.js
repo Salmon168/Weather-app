@@ -104,7 +104,7 @@ function switchTheme(icon) {
     let bodyColor = document.querySelector("body");
     bodyColor.style.background = "#cad0d8";
     let list = document.querySelector("ul");
-    list.style.background = "#cad0d8";
+    list.style.background = "rgba(202, 208, 216, 0.2)";
   }
 }
 
