@@ -20,7 +20,7 @@ h2 {
   text-align: center;
   font-weight: 500;
   font-size: 15px;
-  margin: 20px 0 0 0;
+  margin: 30px 0 0 0;
 }
 
 h3 {
@@ -47,13 +47,21 @@ small {
 }
 
 ul {
-  margin: 60px 20px 0 20px;
+  margin: 10px 20px 0 20px;
   list-style: none;
-  background: #cad0d8;
-  opacity: 0.8;
+  background: rgba(202, 208, 216, 0.1);
   border-radius: 10px;
   padding: 10px;
   color: rgba(14, 12, 34, 1);
+}
+
+.card {
+  background: rgba(202, 208, 216, 0.2);
+  border-radius: 10px;
+}
+
+.card-text {
+  color: white;
 }
 
 .city {
@@ -152,4 +160,20 @@ ul {
 
 .main-weather-view {
   padding: 0;
+}
+
+.min-temp {
+  margin: 10px 30px 0 30px;
+  background: rgba(202, 208, 216, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  color: rgba(14, 12, 34, 1);
+}
+
+.max-temp {
+  margin: 10px 25px 0 0;
+  background: rgba(202, 208, 216, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  color: rgba(14, 12, 34, 1);
 }

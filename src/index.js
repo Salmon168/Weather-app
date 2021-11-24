@@ -88,7 +88,6 @@ let citySearched = document.querySelector("#city-search-form");
 let locationSearched = document.querySelector("#location-button");
 
 function switchTheme(icon) {
-  console.log(icon);
   if (icon.includes("d")) {
     let background = document.querySelector(".container");
     background.style.background =
@@ -109,11 +108,57 @@ function switchTheme(icon) {
   }
 }
 
+function injectForecastHtml(response) {
+  console.log(response);
+
+  let forecastDisplay = document.querySelector("#forecast-container");
+
+  let forecastHTML = `<div class="card-group">`;
+
+  forecastNum = [2, 3, 4, 5, 6, 7];
+
+  forecastNum.forEach(function forecast(num) {
+    let date = new Date(response.data.daily[num].dt * 1000);
+    forecastHTML =
+      forecastHTML +
+      `
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">${getDate(date).substring(0, 3)}</p>
+          </div>
+          <img src="" id="forecast-icon-${num}" class="card-img-top" alt="${
+        response.data.daily[num].weather[0].main
+      }" />
+          <div class="forecast">${Math.round(
+            response.data.daily[num].temp.min
+          )}°C/${Math.round(response.data.daily[num].temp.max)}°C</div>
+        </div>
+      `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastDisplay.innerHTML = forecastHTML;
+
+  forecastNum.forEach(function forecast(num) {
+    let forecastId = response.data.daily[num].weather[0].icon;
+    console.log(forecastId);
+    let forecastIcon = document.querySelector(`#forecast-icon-${num}`);
+    console.log(forecastIcon);
+    forecastIcon.setAttribute("src", `src/icons/${forecastId}.gif`);
+  });
+}
+
+function getForecast(location) {
+  let apiKey = "ce5b2bb33ecd8a0125c5f9876d5e019d";
+  let link = `https://api.openweathermap.org/data/2.5/onecall?${location}&units=metric&appid=${apiKey}`;
+  axios.get(link).then(injectForecastHtml);
+}
+
 //Get info from weather api
 function getCityInfo(response) {
   let cityInfo = response.data;
   console.log(cityInfo);
-
   //Extracting info from JSON
   let cityName = cityInfo.name;
   let temperature = Number(cityInfo.main.temp).toFixed(1);
@@ -147,12 +192,17 @@ function getCityInfo(response) {
   let windDisplay = document.querySelector("#wind");
   windDisplay.innerHTML = wind;
 
-  //icon
+  //icon and background
   let iconCode = cityInfo.weather[0].icon;
   let weatherIcon = document.querySelector("#weather-icon");
-  let link = `src/icons/${iconCode}.gif`;
   weatherIcon.setAttribute("src", `src/icons/${iconCode}.gif`);
   switchTheme(iconCode);
+
+  //forecast
+  let lat = cityInfo.coord.lat;
+  let lon = cityInfo.coord.lon;
+  let locationHtml = `lat=${lat}&lon=${lon}`;
+  getForecast(locationHtml);
 }
 
 function inputCity(city) {
@@ -188,3 +238,15 @@ citySearched.addEventListener("submit", submitCity);
 inputCity("Kuala Lumpur");
 
 locationSearched.addEventListener("click", inputLocation);
+
+//Weather forecast
+
+let forecastDisplay = document.querySelector("forecast-container");
+
+let forecastHTML = `<div class="card-group">`;
+
+let forcastNum = [0, 1, 2, 3, 4, 5];
+
+function getCityForecast(response) {
+  console.log(response);
+}

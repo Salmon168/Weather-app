@@ -28,7 +28,13 @@
     <div class="container">
       <div class="row top">
         <div class="col-4 main-weather-view">
-          <img class="weather" id="weather-icon" src="" alt="" width="150px" />
+          <img
+            class="weather"
+            id="weather-icon"
+            src="src/icons/loading.gif"
+            alt=""
+            width="150px"
+          />
         </div>
         <div class="col-4 overview">
           <h2 class="city">
@@ -67,52 +73,20 @@
               <span id="wind"></span> m/s
             </li>
           </ul>
+          <div class="row">
+            <div class="col-4 min-temp">
+              Max Temp
+              <div class="min">13</div>
+            </div>
+            <div class="col-4 max-temp">
+              Min Temp
+              <div class="max">24</div>
+            </div>
+          </div>
         </div>
       </div>
-      <!-- 
       <hr />
-      <div class="card-group">
-        <div class="card">
-          <div class="card-body">
-            <p class="card-text">Wednesday</p>
-          </div>
-          <img src="src/sun.png" class="card-img-top" alt="Wednesday" />
-          <div class="forecast">12°C/23°C</div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <p class="card-text">Thursday</p>
-          </div>
-          <img src="src/sun.png" class="card-img-top" alt="Thursday" />
-          <div class="forecast">12°C/23°C</div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <p class="card-text">Friday</p>
-          </div>
-          <img src="src/sun.png" class="card-img-top" alt="Friday" />
-          <div class="forecast">12°C/23°C</div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <p class="card-text">Saturday</p>
-          </div>
-          <img src="src/sun.png" class="card-img-top" alt="Saturday" />
-          <div class="forecast">12°C/23°C</div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <p class="card-text">Sunday</p>
-          </div>
-          <img src="src/sun.png" class="card-img-top" alt="Sunday" />
-          <div class="forecast">12°C/23°C</div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <p class="card-text">Monday</p>
-          </div>
-          <img src="src/sun.png" class="card-img-top" alt="Monday" />
-          <div class="forecast">12°C/23°C</div>-->
+      <div id="forecast-container" class="forecast-container"></div>
     </div>
     <small class="source">
       <a href="https://github.com/Salmon168/Weather-app" target="_blank"
