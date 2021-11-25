@@ -1,9 +1,11 @@
-// Getting date and time
-let now = new Date();
-
 //Converts 24 hour format to 12 hour format
 function get12HourTime(date) {
-  let hour = date.getHours() % 12;
+  let hour = date.getHours();
+  if (date.getHours() !== 12) {
+    hour = date.getHours() % 12;
+  } else {
+    hour = date.getHours();
+  }
   let minute = ("0" + date.getMinutes()).slice(-2);
   let period = "";
 
@@ -51,9 +53,12 @@ function getDate(date) {
   return formattedDate;
 }
 
-let dateDisplay = document.querySelector("h4");
+//Get local time
+let now = new Date();
 
-dateDisplay.innerHTML = `${get12HourTime(now)} </br > ${getDate(now)}`;
+let currentDate = document.querySelector("#local-time");
+
+currentDate.innerHTML = `${get12HourTime(now)} </br > ${getDate(now)}`;
 
 //Switching temperature unit between celcius and fahrenheit
 let unusedtUnit = document.querySelector("#unused-unit");
@@ -94,10 +99,6 @@ function switchTheme(icon) {
       "linear-gradient(180deg, rgba(42,117,185,1) 0%, rgba(67,147,213,1) 26%, rgba(118,174,225,1) 88%)";
     let bodyColor = document.querySelector("body");
     bodyColor.style.background = "#ffffff";
-    let list = document.querySelector("ul");
-    list.style.background = "rgb(184, 214, 241, 0.5)";
-    let cards = document.querySelector(".card");
-    cards.style.background = "rgb(184, 214, 241, 0.5)";
   }
   if (icon.includes("n")) {
     let background = document.querySelector(".container");
@@ -105,10 +106,6 @@ function switchTheme(icon) {
       "linear-gradient(180deg,rgba(14, 12, 34, 1) 0%,rgba(66, 94, 127, 1) 90%)";
     let bodyColor = document.querySelector("body");
     bodyColor.style.background = "#cad0d8";
-    let list = document.querySelector("ul");
-    list.style.background = "rgba(202, 208, 216, 0.2)";
-    let cards = document.querySelector(".card");
-    cards.style.background = "rgba(202, 208, 216, 0.2)";
   }
 }
 
@@ -175,6 +172,8 @@ function getCityInfo(response) {
   let wind = cityInfo.wind.speed;
   let min = cityInfo.main.temp_min;
   let max = cityInfo.main.temp_max;
+  let time = cityInfo.dt;
+  let timezone = cityInfo.timezone;
 
   //Display info on app
   //City Name
@@ -218,6 +217,22 @@ function getCityInfo(response) {
   let lon = cityInfo.coord.lon;
   let locationHtml = `lat=${lat}&lon=${lon}`;
   getForecast(locationHtml);
+
+  //get city Time
+  let cityTime = document.querySelector("h4");
+  let d = new Date();
+  localTime = d.getTime();
+  localOffset = d.getTimezoneOffset() * 60000;
+  utc = localTime + localOffset;
+  let cityDateCode = utc + 1000 * timezone;
+  let cityDate = new Date(cityDateCode);
+  console.log(cityDate.getHours());
+  cityTime.innerHTML = `${get12HourTime(cityDate)} <br /> ${getDate(cityDate)}`;
+
+  //Get refreshed local Time
+  let now = new Date();
+  let currentDate = document.querySelector("#local-time");
+  currentDate.innerHTML = `${get12HourTime(now)} </br > ${getDate(now)}`;
 }
 
 function inputCity(city) {
