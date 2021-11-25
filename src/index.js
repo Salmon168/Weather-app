@@ -1,10 +1,12 @@
 //Converts 24 hour format to 12 hour format
 function get12HourTime(date) {
   let hour = date.getHours();
-  if (date.getHours() !== 12) {
+  if (hour === 0) {
+    hour = 12;
+  } else if (date.getHours() !== 12) {
     hour = date.getHours() % 12;
   } else {
-    hour = date.getHours();
+    hour = 12;
   }
   let minute = ("0" + date.getMinutes()).slice(-2);
   let period = "";
@@ -168,7 +170,7 @@ function getCityInfo(response) {
   let temperature = Number(cityInfo.main.temp).toFixed(1);
   let weather = cityInfo.weather[0].main;
   let humidity = cityInfo.main.humidity;
-  let pressure = cityInfo.main.pressure;
+  let feel = cityInfo.main.feels_like;
   let wind = cityInfo.wind.speed;
   let min = cityInfo.main.temp_min;
   let max = cityInfo.main.temp_max;
@@ -192,9 +194,9 @@ function getCityInfo(response) {
   let humidityDisplay = document.querySelector("#humid");
   humidityDisplay.innerHTML = humidity;
 
-  //Pressure
-  let pressureDisplay = document.querySelector("#pressure");
-  pressureDisplay.innerHTML = pressure;
+  //feelsLike
+  let feelDisplay = document.querySelector("#feel");
+  feelDisplay.innerHTML = Math.round(feel);
 
   //Wind
   let windDisplay = document.querySelector("#wind");
@@ -226,7 +228,6 @@ function getCityInfo(response) {
   utc = localTime + localOffset;
   let cityDateCode = utc + 1000 * timezone;
   let cityDate = new Date(cityDateCode);
-  console.log(cityDate.getHours());
   cityTime.innerHTML = `${get12HourTime(cityDate)} <br /> ${getDate(cityDate)}`;
 
   //Get refreshed local Time

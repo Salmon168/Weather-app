@@ -60,9 +60,10 @@ ul {
   border-radius: 5px;
   background: rgba(202, 208, 216);
   border: none;
-  color: white;
+  color: black;
   font-size: 10px;
   padding: 6px;
+  font-weight: 500;
 }
 
 .city-search:hover {
