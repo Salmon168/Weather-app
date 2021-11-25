@@ -66,24 +66,50 @@ currentDate.innerHTML = `${get12HourTime(now)} </br > ${getDate(now)}`;
 let unusedtUnit = document.querySelector("#unused-unit");
 
 function unitConverter() {
+  tempElements = [
+    "temp",
+    "feel",
+    "min-temp",
+    "maxi-temp",
+    "min-forecast-temp-1",
+    "min-forecast-temp-2",
+    "min-forecast-temp-3",
+    "min-forecast-temp-4",
+    "min-forecast-temp-5",
+    "min-forecast-temp-6",
+    "max-forecast-temp-1",
+    "max-forecast-temp-2",
+    "max-forecast-temp-3",
+    "max-forecast-temp-4",
+    "max-forecast-temp-5",
+    "max-forecast-temp-6",
+  ];
   let currentUnit = document.querySelector("#current-unit");
   let unusedUnit = document.querySelector("#unused-unit");
-  let displayTemp = document.querySelector("#temp");
-  let currentTemp = Number(document.querySelector("#temp").innerHTML);
-  let temperature = {
-    celcius: ((currentTemp - 32) / 1.8).toFixed(1),
-    fahrenheit: (currentTemp * 1.8 + 32).toFixed(1),
-  };
+  tempElements.forEach(function unitChange(tempi) {
+    let currentTemp = document.querySelector(`#${tempi}`);
+    tempNum = Number(currentTemp.innerHTML);
+    let temperature = {
+      celcius: ((tempNum - 32) / 1.8).toFixed(1),
+      fahrenheit: (tempNum * 1.8 + 32).toFixed(1),
+    };
+
+    if (currentUnit.innerHTML === "°C") {
+      currentTemp.innerHTML = Math.round(temperature.fahrenheit);
+    } else {
+      currentTemp.innerHTML = Math.round(temperature.celcius);
+    }
+  });
 
   if (currentUnit.innerHTML === "°C") {
     currentUnit.innerHTML = "°F";
     unusedUnit.innerHTML = "°C";
-    displayTemp.innerHTML = temperature.fahrenheit;
   } else {
     currentUnit.innerHTML = "°C";
     unusedUnit.innerHTML = "°F";
-    displayTemp.innerHTML = temperature.celcius;
   }
+
+  units = [];
 }
 
 unusedtUnit.addEventListener("click", unitConverter);
@@ -135,11 +161,11 @@ function injectForecastHtml(response) {
           <img src="" id="forecast-icon-${num}" class="card-img-top" alt="${
         response.data.daily[num].weather[0].main
       }" />
-          <div class="forecast"><span class="min-forecast-temp">${Math.round(
-            response.data.daily[num].temp.min
-          )}°C</span>   <span class="max-forecast-temp">${Math.round(
+          <div class="forecast"><span class="min-forecast-temp" id="min-forecast-temp-${num}">${Math.round(
+        response.data.daily[num].temp.min
+      )}</span><span>°C</span>   <span class="max-forecast-temp" id="max-forecast-temp-${num}">${Math.round(
         response.data.daily[num].temp.max
-      )}°C</span></div>
+      )}</span><span>°C</span></div>
         </div>
       `;
   });
@@ -174,7 +200,7 @@ function getCityInfo(response) {
   let wind = cityInfo.wind.speed;
   let min = cityInfo.main.temp_min;
   let max = cityInfo.main.temp_max;
-  let time = cityInfo.dt;
+
   let timezone = cityInfo.timezone;
 
   //Display info on app
@@ -184,7 +210,7 @@ function getCityInfo(response) {
 
   //Temperature
   let h1 = document.querySelector("#temp");
-  h1.innerHTML = temperature;
+  h1.innerHTML = Math.round(temperature);
 
   //Weather
   let h3 = document.querySelector("#weather");
