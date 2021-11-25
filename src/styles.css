@@ -55,9 +55,24 @@ ul {
   color: white;
 }
 
+.city-search {
+  width: 50%;
+  border-radius: 5px;
+  background: rgba(202, 208, 216);
+  border: none;
+  color: white;
+  font-size: 10px;
+  padding: 6px;
+}
+
+.city-search:hover {
+  background: rgb(223, 228, 235);
+}
+
 .card {
-  background: rgba(202, 208, 216, 0.2);
+  background: rgb(184, 214, 241, 0.5);
   border-radius: 10px;
+  border-color: rgb(184, 214, 241, 0.2);
 }
 
 .card-text {
@@ -104,14 +119,9 @@ ul {
 }
 
 .card-img-top {
-  width: 100px;
+  width: 140px;
   display: block;
   margin: 0 auto;
-}
-
-.city-search {
-  width: 55%;
-  margin: 0 0 10px 0;
 }
 
 .container {
@@ -136,6 +146,7 @@ ul {
 
 .col-2 {
   padding: 5px;
+  color: rgb(184, 214, 241, 0.5);
 }
 
 .border {
@@ -145,10 +156,13 @@ ul {
 .forecast {
   padding: 10px;
   text-align: center;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .extra-info {
-  padding: 10px;
+  margin: 35px 0 0 0;
+  padding: 0 10px;
 }
 
 .list-group {
@@ -166,32 +180,20 @@ ul {
 .fa-temperature-low {
   margin: 10px;
   font-size: 35px;
+  color: rgba(120, 175, 248, 0.904);
 }
 
 .fa-temperature-high {
   margin: 10px;
   font-size: 35px;
+  color: rgba(248, 120, 120, 0.904);
 }
-/* .min-temp {
-  margin: 10px 30px 0 30px;
-  background: rgba(202, 208, 216, 0.1);
-  border-radius: 10px;
-  padding: 10px;
-  color: rgba(14, 12, 34, 1);
-}
-
-.max-temp {
-  margin: 10px 25px 0 0;
-  background: rgba(202, 208, 216, 0.1);
-  border-radius: 10px;
-  padding: 10px;
-  color: rgba(14, 12, 34, 1);
-} */
 
 .temp-range {
   padding: 10px 20px;
   font-size: 15px;
   text-align: center;
+  margin: 10px 0 0 0;
 }
 
 .low-temp {
@@ -216,4 +218,67 @@ ul {
   margin: 10px 0 0 0;
   font-size: 20px;
   font-weight: 400;
+}
+
+.search-button {
+  background-color: #ffeba7;
+  font-weight: 600;
+  font-size: 10px;
+  padding: 6px 7px;
+  border: none;
+  border-radius: 3px;
+}
+
+.search-button:hover {
+  background-color: #fff3ca;
+  color: black;
+}
+
+.location-button {
+  font-weight: 500;
+  font-size: 13px;
+  padding: 3px 4px 4px 4px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffeba7;
+}
+
+.hithere:hover {
+  animation: hithere 1s ease;
+  background-color: #fff3ca;
+}
+@keyframes hithere {
+  30% {
+    transform: scale(1.2);
+  }
+  40%,
+  60% {
+    transform: rotate(-20deg) scale(1.2);
+  }
+  50% {
+    transform: rotate(20deg) scale(1.2);
+  }
+  70% {
+    transform: rotate(0deg) scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.forecast-day {
+  padding: 8px 16px 0 16px;
+}
+
+.forecast-day-font {
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.max-forecast-temp {
+  font-weight: 600;
+}
+
+.min-forecast-temp {
+  font-weight: 300;
 }

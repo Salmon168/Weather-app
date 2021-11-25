@@ -95,7 +95,9 @@ function switchTheme(icon) {
     let bodyColor = document.querySelector("body");
     bodyColor.style.background = "#ffffff";
     let list = document.querySelector("ul");
-    list.style.background = "#B8D6F1";
+    list.style.background = "rgb(184, 214, 241, 0.5)";
+    let cards = document.querySelector(".card");
+    cards.style.background = "rgb(184, 214, 241, 0.5)";
   }
   if (icon.includes("n")) {
     let background = document.querySelector(".container");
@@ -105,6 +107,8 @@ function switchTheme(icon) {
     bodyColor.style.background = "#cad0d8";
     let list = document.querySelector("ul");
     list.style.background = "rgba(202, 208, 216, 0.2)";
+    let cards = document.querySelector(".card");
+    cards.style.background = "rgba(202, 208, 216, 0.2)";
   }
 }
 
@@ -115,7 +119,7 @@ function injectForecastHtml(response) {
 
   let forecastHTML = `<div class="card-group">`;
 
-  forecastNum = [2, 3, 4, 5, 6, 7];
+  forecastNum = [1, 2, 3, 4, 5, 6];
 
   forecastNum.forEach(function forecast(num) {
     let date = new Date(response.data.daily[num].dt * 1000);
@@ -123,15 +127,20 @@ function injectForecastHtml(response) {
       forecastHTML +
       `
         <div class="card">
-          <div class="card-body">
-            <p class="card-text">${getDate(date).substring(0, 3)}</p>
+          <div class="card-body forecast-day">
+            <p class="card-text forecast-day-font">${getDate(date).substring(
+              0,
+              3
+            )}</p>
           </div>
           <img src="" id="forecast-icon-${num}" class="card-img-top" alt="${
         response.data.daily[num].weather[0].main
       }" />
-          <div class="forecast">${Math.round(
+          <div class="forecast"><span class="min-forecast-temp">${Math.round(
             response.data.daily[num].temp.min
-          )}°C/${Math.round(response.data.daily[num].temp.max)}°C</div>
+          )}°C</span>   <span class="max-forecast-temp">${Math.round(
+        response.data.daily[num].temp.max
+      )}°C</span></div>
         </div>
       `;
   });
@@ -142,9 +151,7 @@ function injectForecastHtml(response) {
 
   forecastNum.forEach(function forecast(num) {
     let forecastId = response.data.daily[num].weather[0].icon;
-    console.log(forecastId);
     let forecastIcon = document.querySelector(`#forecast-icon-${num}`);
-    console.log(forecastIcon);
     forecastIcon.setAttribute("src", `src/icons/${forecastId}.gif`);
   });
 }
@@ -166,6 +173,8 @@ function getCityInfo(response) {
   let humidity = cityInfo.main.humidity;
   let pressure = cityInfo.main.pressure;
   let wind = cityInfo.wind.speed;
+  let min = cityInfo.main.temp_min;
+  let max = cityInfo.main.temp_max;
 
   //Display info on app
   //City Name
@@ -191,6 +200,12 @@ function getCityInfo(response) {
   //Wind
   let windDisplay = document.querySelector("#wind");
   windDisplay.innerHTML = wind;
+
+  //min and max
+  let mintemp = document.querySelector("#min-temp");
+  mintemp.innerHTML = Math.round(min);
+  let maxtemp = document.querySelector("#maxi-temp");
+  maxtemp.innerHTML = Math.round(max);
 
   //icon and background
   let iconCode = cityInfo.weather[0].icon;
