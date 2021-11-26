@@ -63,7 +63,7 @@ let currentDate = document.querySelector("#local-time");
 currentDate.innerHTML = `${get12HourTime(now)} </br > ${getDate(now)}`;
 
 //Switching temperature unit between celcius and fahrenheit
-let unusedtUnit = document.querySelector("#unused-unit");
+let unusedUnit = document.querySelector("#unused-unit");
 
 function unitConverter() {
   tempElements = [
@@ -85,8 +85,7 @@ function unitConverter() {
     "max-forecast-temp-6",
   ];
   let currentUnit = document.querySelector("#current-unit");
-  let unusedUnit = document.querySelector("#unused-unit");
-  tempElements.forEach(function unitChange(tempi) {
+  tempElements.forEach(function tempChange(tempi) {
     let currentTemp = document.querySelector(`#${tempi}`);
     tempNum = Number(currentTemp.innerHTML);
     let temperature = {
@@ -100,19 +99,24 @@ function unitConverter() {
       currentTemp.innerHTML = Math.round(temperature.celcius);
     }
   });
-
   if (currentUnit.innerHTML === "°C") {
     currentUnit.innerHTML = "°F";
     unusedUnit.innerHTML = "°C";
+    tempElements.slice(1).forEach(function unitChange(temp) {
+      let currentTempUnit = document.querySelector(`#${temp}-unit`);
+      currentTempUnit.innerHTML = "°F";
+    });
   } else {
     currentUnit.innerHTML = "°C";
     unusedUnit.innerHTML = "°F";
+    tempElements.slice(1).forEach(function unitChange(temp) {
+      let currentTempUnit = document.querySelector(`#${temp}-unit`);
+      currentTempUnit.innerHTML = "°C";
+    });
   }
-
-  units = [];
 }
 
-unusedtUnit.addEventListener("click", unitConverter);
+unusedUnit.addEventListener("click", unitConverter);
 
 //Search engine
 //Search by city
@@ -163,9 +167,9 @@ function injectForecastHtml(response) {
       }" />
           <div class="forecast"><span class="min-forecast-temp" id="min-forecast-temp-${num}">${Math.round(
         response.data.daily[num].temp.min
-      )}</span><span>°C</span>   <span class="max-forecast-temp" id="max-forecast-temp-${num}">${Math.round(
+      )}</span><span id="min-forecast-temp-${num}-unit">°C</span>   <span class="max-forecast-temp" id="max-forecast-temp-${num}">${Math.round(
         response.data.daily[num].temp.max
-      )}</span><span>°C</span></div>
+      )}</span><span id="max-forecast-temp-${num}-unit">°C</span></div>
         </div>
       `;
   });
