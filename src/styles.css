@@ -1,3 +1,11 @@
+a {
+  font-weight: 600;
+  font-size: 17px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: rgb(29, 45, 139);
+}
+
 body {
   background: #cad0d8;
   font-family: "M PLUS 1", sans-serif;
@@ -11,9 +19,9 @@ form {
 
 h1 {
   position: relative;
-  left: 20px;
+  left: 10px;
   text-align: center;
-  font-size: 60px;
+  font-size: 70px;
 }
 
 h2 {
@@ -82,8 +90,10 @@ ul {
   font-size: 20px;
   position: relative;
   top: -35px;
-  color: rgb(149, 149, 243);
-  text-decoration: underline;
+  color: black;
+  background: rgba(255, 235, 167, 1);
+  border-radius: 5px;
+  padding: 3px 6px;
 }
 
 .current-unit {
@@ -94,8 +104,8 @@ ul {
 }
 
 .unused-unit:hover {
-  color: rgb(57, 57, 190);
   cursor: pointer;
+  background: rgb(255, 244, 209);
 }
 
 .weather {
@@ -281,15 +291,19 @@ ul {
   font-size: 16px;
 }
 
-.source-code {
-  font-size: 20px;
-  font-weight: 400;
-}
-
 .credit-list {
-  width: 50%;
-  display: block;
-  margin: 0 auto;
   background: whitesmoke;
   color: black;
+  margin: 0;
+}
+
+.credit {
+  width: 850px;
+  margin: 0 auto;
+  height: 200px;
+}
+
+.bird {
+  border-radius: 10px;
+  height: 200px;
 }
