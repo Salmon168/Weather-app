@@ -130,14 +130,14 @@ function switchTheme(icon) {
     background.style.background =
       "linear-gradient(180deg, rgba(42,117,185,1) 0%, rgba(67,147,213,1) 26%, rgba(118,174,225,1) 88%)";
     let bodyColor = document.querySelector("body");
-    bodyColor.style.background = "#ffffff";
+    bodyColor.style.background = "url('src/icons/day.gif')";
   }
   if (icon.includes("n")) {
     let background = document.querySelector(".container");
     background.style.background =
       "linear-gradient(180deg,rgba(14, 12, 34, 1) 0%,rgba(66, 94, 127, 1) 90%)";
     let bodyColor = document.querySelector("body");
-    bodyColor.style.background = "#cad0d8";
+    bodyColor.style.background = "url('src/icons/night.gif')";
   }
 }
 

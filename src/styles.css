@@ -7,7 +7,8 @@ a {
 }
 
 body {
-  background: #cad0d8;
+  background: white;
+  background-repeat: repeat-x;
   font-family: "M PLUS 1", sans-serif;
   color: white;
 }
